@@ -5,11 +5,11 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'case-login.eu.auth0.com',
     clientID: 'obcpKGK8DYmH8y1X4NwCaDjMtPswC6Xz',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri:  'http://localhost:3000/callback',
+    audience: 'https://case-login.eu.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid'
   });
-
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);

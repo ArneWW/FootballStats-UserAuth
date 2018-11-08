@@ -34,7 +34,7 @@ class App extends Component {
             <li><Link to='/matches'>Matches</Link></li>
           </ul>
           <ul className='account-nav'>
-            <li><a style={{ cursor: 'pointer' }} onClick={this.login.bind(this)}>User Login</a></li>
+            <li><a style={{ cursor: 'pointer' }} onClick={this.login.bind(this)}>USER LOGIN</a></li>
           </ul>
         </nav>
       </header>
@@ -47,13 +47,24 @@ class App extends Component {
         <Background />
         {this.renderHeader()}
         <Switch>
+        {
+              !isAuthenticated() && (
           <Route path="/matches" component={Matches} />
+          )
+        }
+        </Switch>
+        {
+              isAuthenticated() && (
+                <Switch>
           <Route path="/players/:id" component={PlayerProfile} />
           <Route path="/players" component={Players} />
           <Route path="/teams/:id" component={TeamPlayers} />
           <Route path="/teams" component={Teams} />
           <Route exact path="/" component={LandingPage} />
+          
         </Switch>
+        )
+            }
       </div>;
   }
 }
